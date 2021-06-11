@@ -1,5 +1,5 @@
 const FORM_SELECTOR = document.querySelector("#newTaskFormId");
-const ACTIVITIES_LIST_SELECTOR = document.querySelector("#activitiesList");
+const ACTIVITIES_LIST_SELECTOR = document.querySelector("#activitiesListId");
 const SUBMIT_BTN_SELECTOR = document.querySelector("#taskToListBtnId");
 const INPUT_FIELD_SELECTOR = document.querySelector("#taskInputFieldId");
 
@@ -22,9 +22,53 @@ const newActivityInput = (activity) => {
   return activityItem;
 }
 
+const arrayItemsToDOM = () => {
+  if(activitiesArrayList.length > 0) {
+    activitiesArrayList.forEach(element => {
+      if(element.status) {
+        ACTIVITIES_LIST_SELECTOR.innerHTML += `
+          <div class="activitiesList mt-5 container" id="activitiesListId">
+            <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
+              <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
+                <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
+              </div>
+              <span class="float-right d-flex cardIcons">
+                <i class="material-icons">
+                  done
+                </i>
+                <i class="material-icons">
+                  delete
+                </i>
+              </span>
+            </div>
+          </div>
+        `;
+      } else {
+        ACTIVITIES_LIST_SELECTOR.innerHTML += `
+          <div class="activitiesList mt-5 container" id="activitiesListId">
+            <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
+              <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
+                <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
+              </div>
+              <span class="float-right d-flex cardIcons">
+                <i class="material-icons">
+                  done
+                </i>
+                <i class="material-icons">
+                  delete
+                </i>
+              </span>
+            </div>
+          </div>
+        `;
+      }
+    }) 
+  }
+}
+
 function itemToArray (event) {
   event.preventDefault();
-  //const FORM_SELECTOR = document.querySelector("#newTaskFormId");
   const activity = INPUT_FIELD_SELECTOR.value;
   newActivityInput(activity);
+  arrayItemsToDOM();
 }
