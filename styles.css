@@ -50,6 +50,10 @@ h2 {
 }
 
 @media (max-width: 425px) {
+  .activityCard {
+    width: 90vw;
+  }
+
   .cardTextInfo {
     font-size: 0.8rem;
     padding-left: 12px;
