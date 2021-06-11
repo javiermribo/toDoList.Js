@@ -12,8 +12,8 @@
   <title>My To Do List</title>
 </head>
 <body>
-  <div class="titleAndSubt d-flex flex-column align-items-center mb-5" id="titleAndSubtId">
-  <h1 class="mainTitle mt-4" id="toDoTitle">Mi lista de tareas</h1>
+  <div class="titleAndSubt d-flex flex-column align-items-center mb-4" id="titleAndSubtId">
+  <h1 class="mainTitle mt-4 font-weight-bold" id="toDoTitle">Mi lista de tareas</h1>
   <h2 class="newTaskTitle" id="newTaskTitleId">Agregar una nueva tarea</h2>
   </div>
   <div class="formContainer container" id="formContainerId">
@@ -24,8 +24,10 @@
   </div>
   <div class="activitiesList mt-5 container" id="activitiesListId">
     <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
-      <span><b class="pl-4">Actividad a realizar</b> - Estado</span>
-      <span class="float-right pr-4">
+      <div class="cardTextInfo" id="cardTextInfoId"><b>Actividad a realizar</b> 
+        <span class="activityStatus" id="activityStatusId"> - Estado </span>
+      </div>
+      <span class="float-right d-flex cardIcons">
         <i class="material-icons">
           done
         </i>
