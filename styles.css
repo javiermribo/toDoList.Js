@@ -8,6 +8,10 @@ body {
   font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h2 {
+  font-size: 1.5rem;
+}
+
 .titleAndSubt, 
 .formContainer,
 .newTaskForm,
@@ -26,8 +30,16 @@ body {
   border-color: #6B2D28;
   border-radius: 4px;
   border: 1px solid;
-  width: 60vw;
+  width: 80vw;
   height: 50px;
+}
+
+.cardTextInfo {
+  padding-left: 24px;
+}
+
+.cardIcons {
+  padding-right: 24px;
 }
 
 .taskInputField {
@@ -35,4 +47,22 @@ body {
   border: 1px solid;
   border-color: lightgrey;
   width: 60vw;
+}
+
+@media (max-width: 425px) {
+  .cardTextInfo {
+    font-size: 0.8rem;
+    padding-left: 12px;
+  }
+
+  .activityStatus {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .cardIcons {
+    display: flex;
+    flex-direction: row;
+    padding-right: 12px;
+  }
 }
