@@ -22,13 +22,19 @@ const newActivityInput = (activity) => {
   return activityItem;
 }
 
+const removingDuplicatedCards = () => {
+  while (ACTIVITIES_LIST_SELECTOR.lastChild) {
+    ACTIVITIES_LIST_SELECTOR.removeChild(ACTIVITIES_LIST_SELECTOR.lastChild);
+  }
+};
+
 const arrayItemsToDOM = () => {
   removingDuplicatedCards();
   if(activitiesArrayList.length > 0) {
     activitiesArrayList.forEach(element => {
       if(element.status) {
         ACTIVITIES_LIST_SELECTOR.innerHTML += `
-          <div class="activitiesList mt-5 container" id="activitiesListId">
+          <div class="activitiesList mt-3 container" id="activitiesListId">
             <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
                 <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
@@ -49,7 +55,7 @@ const arrayItemsToDOM = () => {
         `;
       } else {
         ACTIVITIES_LIST_SELECTOR.innerHTML += `
-          <div class="activitiesList mt-5 container" id="activitiesListId">
+          <div class="activitiesList mt-3 container" id="activitiesListId">
             <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
                 <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
@@ -70,12 +76,6 @@ const arrayItemsToDOM = () => {
         `;
       }
     }) 
-  }
-}
-
-const removingDuplicatedCards = () => {
-  while(ACTIVITIES_LIST_SELECTOR.lastChild) {
-    ACTIVITIES_LIST_SELECTOR.removeChild(ACTIVITIES_LIST_SELECTOR.lastChild);
   }
 }
 
