@@ -23,6 +23,7 @@ const newActivityInput = (activity) => {
 }
 
 const arrayItemsToDOM = () => {
+  removingDuplicatedCards();
   if(activitiesArrayList.length > 0) {
     activitiesArrayList.forEach(element => {
       if(element.status) {
@@ -33,6 +34,9 @@ const arrayItemsToDOM = () => {
                 <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
               </div>
               <span class="float-right d-flex cardIcons">
+                <i class="material-icons">
+                  edit
+                </i>
                 <i class="material-icons">
                   done
                 </i>
@@ -52,6 +56,9 @@ const arrayItemsToDOM = () => {
               </div>
               <span class="float-right d-flex cardIcons">
                 <i class="material-icons">
+                  edit
+                </i>
+                <i class="material-icons">
                   done
                 </i>
                 <i class="material-icons">
@@ -63,6 +70,12 @@ const arrayItemsToDOM = () => {
         `;
       }
     }) 
+  }
+}
+
+const removingDuplicatedCards = () => {
+  while(ACTIVITIES_LIST_SELECTOR.lastChild) {
+    ACTIVITIES_LIST_SELECTOR.removeChild(ACTIVITIES_LIST_SELECTOR.lastChild);
   }
 }
 
