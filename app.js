@@ -22,6 +22,11 @@ const newActivityInput = (activity) => {
   return activityItem;
 }
 
+const lsDataSaver = () => {
+  localStorage.setItem('task', JSON.stringify(activitiesArrayList));
+  arrayItemsToDOM();
+}
+
 const removingDuplicatedCards = () => {
   while (ACTIVITIES_LIST_SELECTOR.lastChild) {
     ACTIVITIES_LIST_SELECTOR.removeChild(ACTIVITIES_LIST_SELECTOR.lastChild);
@@ -30,10 +35,14 @@ const removingDuplicatedCards = () => {
 
 const arrayItemsToDOM = () => {
   removingDuplicatedCards();
-  if(activitiesArrayList.length > 0) {
-    activitiesArrayList.forEach(element => {
-      if(element.status) {
-        ACTIVITIES_LIST_SELECTOR.innerHTML += `
+  activitiesArrayList = JSON.parse(localStorage.getItem('task'));
+  if (activitiesArrayList === null) {
+    activitiesArrayList = [];
+  } else {
+    if (activitiesArrayList.length > 0) {
+      activitiesArrayList.forEach((element) => {
+        if (element.status) {
+          ACTIVITIES_LIST_SELECTOR.innerHTML += `
           <div class="activitiesList mt-3 container" id="activitiesListId">
             <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
@@ -53,8 +62,8 @@ const arrayItemsToDOM = () => {
             </div>
           </div>
         `;
-      } else {
-        ACTIVITIES_LIST_SELECTOR.innerHTML += `
+        } else {
+          ACTIVITIES_LIST_SELECTOR.innerHTML += `
           <div class="activitiesList mt-3 container" id="activitiesListId">
             <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
@@ -74,8 +83,9 @@ const arrayItemsToDOM = () => {
             </div>
           </div>
         `;
-      }
-    }) 
+        }
+      });
+    }
   }
 }
 
@@ -83,5 +93,7 @@ function itemToArray (event) {
   event.preventDefault();
   const activity = INPUT_FIELD_SELECTOR.value;
   newActivityInput(activity);
-  arrayItemsToDOM();
+  lsDataSaver();
 }
+
+document.addEventListener("DOMContentLoaded", arrayItemsToDOM);
