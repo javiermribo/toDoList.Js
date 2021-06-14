@@ -8,7 +8,9 @@ body {
   font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-i {
+.editIcon,
+.deleteIcon,
+.doneIcon {
   cursor: pointer;
 }
 
@@ -37,8 +39,8 @@ h2 {
 
 .activityCardTaskDone {
   background-color: #95F768;
-  border-color: #3e7e21;
-  color: #416B2D;
+  border-color: #68AD49;
+  color: #234d10;
 }
 
 .activityCard,
