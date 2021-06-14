@@ -44,20 +44,14 @@ const arrayItemsToDOM = () => {
         if (element.status) {
           ACTIVITIES_LIST_SELECTOR.innerHTML += `
           <div id="${element.id}" class="activitiesList mt-3 container" id="activitiesListId">
-            <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
+            <div class="activityCardTaskDone d-flex align-items-center justify-content-between">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
                 <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
               </div>
               <span class="float-right d-flex cardIcons">
-                <i class="material-icons">
-                  edit
-                </i>
-                <i class="material-icons">
-                  done
-                </i>
-                <i class="material-icons">
-                  delete
-                </i>
+                <i class="material-icons">edit</i>
+                <i class="material-icons">done</i>
+                <i class="material-icons">delete</i>
               </span>
             </div>
           </div>
@@ -65,20 +59,14 @@ const arrayItemsToDOM = () => {
         } else {
           ACTIVITIES_LIST_SELECTOR.innerHTML += `
           <div id="${element.id}" class="activitiesList mt-3 container" id="activitiesListId">
-            <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
+            <div class="activityCard d-flex align-items-center justify-content-between">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
                 <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
               </div>
               <span class="float-right d-flex cardIcons">
-                <i class="material-icons">
-                  edit
-                </i>
-                <i class="material-icons">
-                  done
-                </i>
-                <i class="material-icons">
-                  delete
-                </i>
+                <i class="material-icons">edit</i>
+                <i class="material-icons">done</i>
+                <i class="material-icons">delete</i>
               </span>
             </div>
           </div>
@@ -90,7 +78,7 @@ const arrayItemsToDOM = () => {
 }
 
 const updatingLS = (id) => {
-  let index = activitiesArrayList.findIndex(element => element.id === id);
+  let index = activitiesArrayList.findIndex(element => element.id == id);
   activitiesArrayList[index].status = true;
   lsDataSaver();
 }
@@ -102,16 +90,14 @@ function itemToArray (event) {
   lsDataSaver();
 }
 
-document.addEventListener("DOMContentLoaded", arrayItemsToDOM);
+document.addEventListener('DOMContentLoaded', arrayItemsToDOM);
 
-ACTIVITIES_LIST_SELECTOR.addEventListener('click', event => {
-  event.preventDefault();
-  if (
-    event.target.innerHTML === 'done' ||
-    event.target.innerHTML === 'edit' ||
-    event.target.innerHTML === 'delete'
-  ) {
-    const elementId = event.target.parentElement.parentElement.id;
-    updatingLS(elementId);
+ACTIVITIES_LIST_SELECTOR.addEventListener('click', e => {
+  e.preventDefault();
+  if (e.target.innerHTML === 'edit' || e.target.innerHTML === 'done' || e.target.innerHTML === 'delete') {
+    if(e.target.innerHTML === 'done') {
+      const elementId = e.target.parentElement.parentElement.parentElement.id;
+      updatingLS(elementId);
+    }
   }
 })
