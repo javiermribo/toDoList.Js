@@ -43,7 +43,7 @@ const arrayItemsToDOM = () => {
       activitiesArrayList.forEach((element) => {
         if (element.status) {
           ACTIVITIES_LIST_SELECTOR.innerHTML += `
-          <div class="activitiesList mt-3 container" id="activitiesListId">
+          <div id="${element.id}" class="activitiesList mt-3 container" id="activitiesListId">
             <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
                 <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
@@ -64,7 +64,7 @@ const arrayItemsToDOM = () => {
         `;
         } else {
           ACTIVITIES_LIST_SELECTOR.innerHTML += `
-          <div class="activitiesList mt-3 container" id="activitiesListId">
+          <div id="${element.id}" class="activitiesList mt-3 container" id="activitiesListId">
             <div class="activityCard d-flex align-items-center justify-content-between" id="activityCardId">
               <div class="cardTextInfo" id="cardTextInfoId"><b>${element.activity}</b> 
                 <span class="activityStatus" id="activityStatusId"> - ${element.status} </span>
@@ -89,6 +89,12 @@ const arrayItemsToDOM = () => {
   }
 }
 
+const updatingLS = (id) => {
+  let index = activitiesArrayList.findIndex(element => element.id === id);
+  activitiesArrayList[index].status = true;
+  lsDataSaver();
+}
+
 function itemToArray (event) {
   event.preventDefault();
   const activity = INPUT_FIELD_SELECTOR.value;
@@ -97,3 +103,15 @@ function itemToArray (event) {
 }
 
 document.addEventListener("DOMContentLoaded", arrayItemsToDOM);
+
+ACTIVITIES_LIST_SELECTOR.addEventListener('click', event => {
+  event.preventDefault();
+  if (
+    event.target.innerHTML === 'done' ||
+    event.target.innerHTML === 'edit' ||
+    event.target.innerHTML === 'delete'
+  ) {
+    const elementId = event.target.parentElement.parentElement.id;
+    updatingLS(elementId);
+  }
+})

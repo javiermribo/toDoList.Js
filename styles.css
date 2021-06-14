@@ -8,6 +8,10 @@ body {
   font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+i {
+  cursor: pointer;
+}
+
 h2 {
   font-size: 1.5rem;
 }
@@ -26,8 +30,19 @@ h2 {
 }
 
 .activityCard {
-  background-color: #EB6157;
+  background-color: #ee8a83;
   border-color: #6B2D28;
+  color: #461c1a;
+}
+
+.activityCardTaskDone {
+  background-color: #95F768;
+  border-color: #68AD49;
+  color: #416B2D;
+}
+
+.activityCard,
+.activityCardTaskDone {
   border-radius: 4px;
   border: 1px solid;
   width: 80vw;
@@ -51,6 +66,8 @@ h2 {
 
 @media (max-width: 425px) {
   .activityCard {
+    min-height: 65px;
+    height: auto;
     width: 90vw;
   }
 
