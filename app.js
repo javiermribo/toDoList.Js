@@ -89,7 +89,7 @@ const updatingLS = (id) => {
   lsDataSaver();
 }
 
-const editActivityTextOnInput = id => {
+const editActivityTextOnInput = (id) => {
   const idCard = activitiesArrayList.find(activity => activity.id == id);
   INPUT_FIELD_SELECTOR.value = idCard.activity;
   SUBMIT_BTN_SELECTOR.textContent = 'Editar';
@@ -99,8 +99,8 @@ const editTextOnLs = (value) => {
   activitiesArrayList = activitiesArrayList.map(activity => {
     if(activity.id == idToEdit) {
       return {
-        ...activitiesArrayList,
-        activity: value
+        ...activity,
+        activity: value,
       }
     } else {
       return activity;
