@@ -10,7 +10,8 @@ body {
 
 .editIcon,
 .deleteIcon,
-.doneIcon {
+.doneIcon,
+i {
   cursor: pointer;
 }
 
