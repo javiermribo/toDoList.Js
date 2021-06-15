@@ -77,6 +77,11 @@ const arrayItemsToDOM = () => {
   }
 }
 
+const itemRemoverFromLS = id => {
+  activitiesArrayList = activitiesArrayList.filter(activity => activity.id != id);
+  lsDataSaver();
+}
+
 const updatingLS = (id) => {
   let index = activitiesArrayList.findIndex(element => element.id == id);
   activitiesArrayList[index].status = true;
@@ -98,6 +103,10 @@ ACTIVITIES_LIST_SELECTOR.addEventListener('click', e => {
     if(e.target.innerHTML === 'done') {
       const elementId = e.target.parentElement.parentElement.parentElement.id;
       updatingLS(elementId);
+    }
+    if(e.target.innerHTML === 'delete') {
+      const elementId = e.target.parentElement.parentElement.parentElement.id;
+      itemRemoverFromLS(elementId);
     }
   }
 })
