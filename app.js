@@ -9,6 +9,7 @@ function eventsListeners () {
   FORM_SELECTOR.addEventListener('submit', itemToArray);
 }
 
+let idToEdit;
 let activitiesArrayList = [];
 
 
@@ -94,10 +95,27 @@ const editActivityTextOnInput = id => {
   SUBMIT_BTN_SELECTOR.textContent = 'Editar';
 }
 
+const editTextOnLs = (value) => {
+  activitiesArrayList = activitiesArrayList.map(activity => {
+    if(activity.id == idToEdit) {
+      return {
+        ...activitiesArrayList,
+        activity: value
+      }
+    } else {
+      return activity;
+    }
+  })
+}
+
 function itemToArray (event) {
   event.preventDefault();
   const activity = INPUT_FIELD_SELECTOR.value;
-  newActivityInput(activity);
+  if(SUBMIT_BTN_SELECTOR.textContent === 'Agregar tarea') {
+    newActivityInput(activity);
+  } else {
+    editTextOnLs(activity);
+  }
   lsDataSaver();
 }
 
@@ -115,8 +133,8 @@ ACTIVITIES_LIST_SELECTOR.addEventListener('click', e => {
       itemRemoverFromLS(elementId);
     }
     if(e.target.innerHTML === 'edit') {
-      const elementId = e.target.parentElement.parentElement.parentElement.id;
-      editActivityTextOnInput(elementId);
+      const idToEdit = e.target.parentElement.parentElement.parentElement.id;
+      editActivityTextOnInput(idToEdit);
     }
   }
 })
