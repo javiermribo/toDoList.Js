@@ -88,6 +88,12 @@ const updatingLS = (id) => {
   lsDataSaver();
 }
 
+const editActivityTextOnInput = id => {
+  const idCard = activitiesArrayList.find(activity => activity.id == id);
+  INPUT_FIELD_SELECTOR.value = idCard.activity;
+  SUBMIT_BTN_SELECTOR.textContent = 'Editar';
+}
+
 function itemToArray (event) {
   event.preventDefault();
   const activity = INPUT_FIELD_SELECTOR.value;
@@ -107,6 +113,10 @@ ACTIVITIES_LIST_SELECTOR.addEventListener('click', e => {
     if(e.target.innerHTML === 'delete') {
       const elementId = e.target.parentElement.parentElement.parentElement.id;
       itemRemoverFromLS(elementId);
+    }
+    if(e.target.innerHTML === 'edit') {
+      const elementId = e.target.parentElement.parentElement.parentElement.id;
+      editActivityTextOnInput(elementId);
     }
   }
 })
