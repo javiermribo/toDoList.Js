@@ -5,7 +5,14 @@
 }
 
 body {
+  height: 100vw;
+  width: 100%;
   font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(./Assets/bgImg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .editIcon,
@@ -17,6 +24,10 @@ i {
 
 h2 {
   font-size: 1.5rem;
+}
+
+.titleAndSubt {
+  color: aliceblue;
 }
 
 .titleAndSubt, 
@@ -68,7 +79,17 @@ h2 {
 }
 
 @media (max-width: 425px) {
-  .activityCard {
+  body {
+    background-image: url(./Assets/bgImg.jpg);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .activityCard,
+  .activityCardTaskDone {
     min-height: 65px;
     height: auto;
     width: 90vw;
@@ -81,7 +102,6 @@ h2 {
 
   .activityStatus {
     display: flex;
-    justify-content: space-around;
   }
 
   .cardIcons {
