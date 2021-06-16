@@ -116,8 +116,9 @@ function itemToArray (event) {
   } else {
     editTextOnLs(activity);
   }
+  SUBMIT_BTN_SELECTOR.textContent = 'Agregar tarea';
+  FORM_SELECTOR.reset();
   lsDataSaver();
-  SUBMIT_BTN_SELECTOR.textContent === "Agregar tarea";
 }
 
 document.addEventListener('DOMContentLoaded', arrayItemsToDOM);
