@@ -5,10 +5,6 @@ const INPUT_FIELD_SELECTOR = document.querySelector("#taskInputFieldId");
 
 eventsListeners();
 
-function eventsListeners () {
-  FORM_SELECTOR.addEventListener('submit', itemToArray);
-}
-
 let idToEdit;
 let activitiesArrayList = [];
 
@@ -108,17 +104,20 @@ const editTextOnLs = (value) => {
   })
 }
 
-function itemToArray (event) {
-  event.preventDefault();
-  const activity = INPUT_FIELD_SELECTOR.value;
-  if(SUBMIT_BTN_SELECTOR.textContent === 'Agregar tarea') {
-    newActivityInput(activity);
-  } else {
-    editTextOnLs(activity);
+function eventsListeners() {
+  FORM_SELECTOR.addEventListener("submit", itemToArray);
+  function itemToArray(event) {
+    event.preventDefault();
+    const activity = INPUT_FIELD_SELECTOR.value;
+    if (SUBMIT_BTN_SELECTOR.textContent === "Agregar tarea") {
+      newActivityInput(activity);
+    } else {
+      editTextOnLs(activity);
+    }
+    SUBMIT_BTN_SELECTOR.textContent = "Agregar tarea";
+    FORM_SELECTOR.reset();
+    lsDataSaver();
   }
-  SUBMIT_BTN_SELECTOR.textContent = 'Agregar tarea';
-  FORM_SELECTOR.reset();
-  lsDataSaver();
 }
 
 document.addEventListener('DOMContentLoaded', arrayItemsToDOM);
