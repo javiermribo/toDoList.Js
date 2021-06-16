@@ -117,6 +117,7 @@ function itemToArray (event) {
     editTextOnLs(activity);
   }
   lsDataSaver();
+  SUBMIT_BTN_SELECTOR.textContent === "Agregar tarea";
 }
 
 document.addEventListener('DOMContentLoaded', arrayItemsToDOM);
@@ -133,7 +134,7 @@ ACTIVITIES_LIST_SELECTOR.addEventListener('click', e => {
       itemRemoverFromLS(elementId);
     }
     if(e.target.innerHTML === 'edit') {
-      const idToEdit = e.target.parentElement.parentElement.parentElement.id;
+      idToEdit = e.target.parentElement.parentElement.parentElement.id;
       editActivityTextOnInput(idToEdit);
     }
   }
