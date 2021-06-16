@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+html {
   height: 100vw;
   width: 100%;
   font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
